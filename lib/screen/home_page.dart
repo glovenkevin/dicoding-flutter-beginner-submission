@@ -22,55 +22,183 @@ class HomePage extends StatelessWidget {
             )
           ],
         ),
-        body: Container(
-          alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(top: 20, left: 18, right: 18, bottom: 18),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Text(
-                'Week in Paris',
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFB374F2)),
-              ),
-              Text(
-                '2021 Fashio show in Paris',
-                style: TextStyle(
-                    fontSize: smallFont,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff363636)),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  'Explore',
-                  style: TextStyle(
-                      color: Color(0xff363636),
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Recomended',
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+              alignment: Alignment.topLeft,
+              padding:
+                  EdgeInsets.only(top: 10, left: 18, right: 18, bottom: 18),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Text(
+                    'Week in Paris',
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFB374F2)),
+                  ),
+                  Text(
+                    '2021 Fashio show in Paris',
+                    style: TextStyle(
+                        fontSize: smallFont,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff363636)),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20, bottom: 10),
+                    child: Text(
+                      'Explore',
                       style: TextStyle(
-                          fontSize: smallFont, color: Color(0xffab92c6))),
-                  Text('New Model',
-                      style:
-                          TextStyle(fontSize: smallFont, color: Colors.black)),
-                  Text('2020 Show',
-                      style:
-                          TextStyle(fontSize: smallFont, color: Colors.black))
+                          color: Color(0xff363636),
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          _showToast(context, "test Bar");
+                        },
+                        child: Text('Recomended',
+                            style: TextStyle(
+                                fontSize: smallFont, color: Color(0xffab92c6))),
+                      ),
+                      Text('New Model',
+                          style: TextStyle(
+                              fontSize: smallFont, color: Colors.black)),
+                      Text('2020 Show',
+                          style: TextStyle(
+                              fontSize: smallFont, color: Colors.black))
+                    ],
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(25),
+                                  child: Image.asset(
+                                    'assets/images/cute1.jpeg',
+                                    alignment: Alignment.topLeft,
+                                    width: 150,
+                                  ),
+                                ),
+                                decoration: BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey,
+                                      spreadRadius: 2,
+                                      blurRadius: 10,
+                                      offset: Offset(3, 6)),
+                                ], borderRadius: BorderRadius.circular(25)),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 10, left: 5),
+                                child: Text(
+                                  'Felisia Nugroho',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5, left: 5),
+                                child: Text(
+                                  'Malang',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  _showToast(context, "Test Gambar");
+                                },
+                                child: Container(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(25),
+                                    child: Image.asset(
+                                      'assets/images/cute1.jpeg',
+                                      alignment: Alignment.topLeft,
+                                      width: 150,
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.grey,
+                                        spreadRadius: 2,
+                                        blurRadius: 10,
+                                        offset: Offset(3, 6)),
+                                  ], borderRadius: BorderRadius.circular(25)),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 10, left: 5),
+                                child: Text(
+                                  'Alice Voldemort',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5, left: 5),
+                                child: Text(
+                                  'Surabaya',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20, bottom: 10),
+                    child: Container(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(25),
+                          child: Image.asset(
+                            'assets/images/cute2.jpeg',
+                          ),
+                        ),
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey,
+                              spreadRadius: 0,
+                              blurRadius: 10,
+                              offset: Offset(3, 3)),
+                        ], borderRadius: BorderRadius.circular(25))),
+                  )
                 ],
               ),
-              Container(
-                child: Column(),
-              )
-            ],
+            ),
           ),
         ));
+  }
+
+  void _showToast(BuildContext context, String msg) {
+    final scafold = ScaffoldMessenger.of(context);
+    scafold.showSnackBar(SnackBar(
+      content: Text(msg),
+      action: SnackBarAction(
+        label: "Close",
+        onPressed: scafold.hideCurrentSnackBar,
+      ),
+    ));
   }
 }
