@@ -1,6 +1,11 @@
+import 'package:fashion_apps/screen/detail_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  final String _username;
+
+  HomePage(this._username);
+
   @override
   Widget build(BuildContext context) {
     var smallFont = 12.0;
@@ -13,13 +18,21 @@ class HomePage extends StatelessWidget {
             onPressed: () => {},
           ),
           actions: [
-            IconButton(
-              icon: Icon(
-                Icons.search,
-                color: Colors.grey[600],
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text(
+                "Hi $_username!",
+                style: TextStyle(color: Color(0xFFB374F2)),
               ),
-              onPressed: () => {},
-            )
+            ),
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.login_outlined,
+                  color: Colors.grey[600],
+                ))
           ],
         ),
         body: SafeArea(
@@ -79,44 +92,49 @@ class HomePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(25),
-                                  child: Image.asset(
-                                    'assets/images/cute1.jpeg',
-                                    alignment: Alignment.topLeft,
-                                    width: 150,
+                        GestureDetector(
+                          onTap: () {
+                            _showDetail(context);
+                          },
+                          child: Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(25),
+                                    child: Image.asset(
+                                      'assets/images/cute1.jpeg',
+                                      alignment: Alignment.topLeft,
+                                      width: 150,
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.grey,
+                                        spreadRadius: 2,
+                                        blurRadius: 10,
+                                        offset: Offset(3, 6)),
+                                  ], borderRadius: BorderRadius.circular(25)),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 10, left: 5),
+                                  child: Text(
+                                    'Felisia Nugroho',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                decoration: BoxDecoration(boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey,
-                                      spreadRadius: 2,
-                                      blurRadius: 10,
-                                      offset: Offset(3, 6)),
-                                ], borderRadius: BorderRadius.circular(25)),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 10, left: 5),
-                                child: Text(
-                                  'Felisia Nugroho',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 5, left: 5),
-                                child: Text(
-                                  'Malang',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                              )
-                            ],
+                                Padding(
+                                  padding: EdgeInsets.only(top: 5, left: 5),
+                                  child: Text(
+                                    'Malang',
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         Container(
@@ -189,6 +207,12 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ));
+  }
+
+  void _showDetail(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return DetailPage();
+    }));
   }
 
   void _showToast(BuildContext context, String msg) {

@@ -1,4 +1,4 @@
-import 'package:fashion_apps/screen/home_page.dart';
+import 'package:fashion_apps/screen/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,9 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primaryColor: Colors.white),
-      home: new HomePage(),
+      title: "Fashion Apps",
+      theme: ThemeData(primaryColor: Colors.pink),
+      home: new LoginPage(),
     );
   }
 }
