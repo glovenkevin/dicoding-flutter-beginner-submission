@@ -16,81 +16,84 @@ class LoginPage extends StatelessWidget {
           elevation: 0,
         ),
         body: Container(
-          padding: EdgeInsets.all(25),
+          padding: EdgeInsets.all(20),
           decoration: BoxDecoration(color: Colors.white),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "Wellcome Back",
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFFB374F2)),
-                  ),
-                ],
-              ),
-              Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "Sign In",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                    textAlign: TextAlign.start,
-                  ),
-                ],
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: "gloven",
-                  labelText: "Username",
+          child: SingleChildScrollView(
+            reverse: true,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Wellcome Back",
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFFB374F2)),
+                    ),
+                  ],
                 ),
-                controller: userController,
-                onChanged: (String value) {
-                  _username = value;
-                },
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 15),
-                child: TextField(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Sign In",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
+                TextField(
                   decoration: InputDecoration(
-                    hintText: "password",
-                    labelText: "Password",
+                    hintText: "gloven",
+                    labelText: "Username",
                   ),
-                  obscureText: true,
-                  autocorrect: false,
-                  enableSuggestions: false,
+                  controller: userController,
                   onChanged: (String value) {
-                    _password = value;
+                    _username = value;
                   },
-                  controller: passwordController,
                 ),
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.maxFinite, 35)),
-                child: Text("Login"),
-                onPressed: () {
-                  if (_username.isEmpty || _password.isEmpty) {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            content: Text(
-                              "Username atau Password belum diisi",
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          );
-                        });
-                  } else {
-                    _goToHomePage(context, _username);
-                  }
-                },
-              )
-            ],
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "password",
+                      labelText: "Password",
+                    ),
+                    obscureText: true,
+                    autocorrect: false,
+                    enableSuggestions: false,
+                    onChanged: (String value) {
+                      _password = value;
+                    },
+                    controller: passwordController,
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.maxFinite, 35)),
+                  child: Text("Login"),
+                  onPressed: () {
+                    if (_username.isEmpty || _password.isEmpty) {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              content: Text(
+                                "Username atau Password belum diisi",
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            );
+                          });
+                    } else {
+                      _goToHomePage(context, _username);
+                    }
+                  },
+                )
+              ],
+            ),
           ),
         ));
   }
