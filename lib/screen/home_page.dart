@@ -79,12 +79,16 @@ class HomePage extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: smallFont, color: Color(0xffab92c6))),
                       ),
-                      Text('New Model',
-                          style: TextStyle(
-                              fontSize: smallFont, color: Colors.black)),
-                      Text('2020 Show',
-                          style: TextStyle(
-                              fontSize: smallFont, color: Colors.black))
+                      TabText(
+                        text: 'New Model',
+                        fontSize: smallFont,
+                        state: 0,
+                      ),
+                      TabText(
+                        text: '2020 Show',
+                        fontSize: smallFont,
+                        state: 0,
+                      ),
                     ],
                   ),
                   Container(
@@ -224,5 +228,49 @@ class HomePage extends StatelessWidget {
         onPressed: scafold.hideCurrentSnackBar,
       ),
     ));
+  }
+}
+
+class TabText extends StatefulWidget {
+  final String text;
+  final double fontSize;
+  final int state;
+
+  const TabText(
+      {required this.text, required this.fontSize, required this.state});
+
+  @override
+  _TabTextColorState createState() => _TabTextColorState();
+}
+
+class _TabTextColorState extends State<TabText> {
+  Color _currentColor = Colors.black;
+  int state = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    if (widget.state == 1) {
+      _currentColor = Color(0xffab92c6);
+    }
+
+    return GestureDetector(
+      child: Text(
+        widget.text,
+        style: TextStyle(fontSize: widget.fontSize, color: _currentColor),
+      ),
+      onTap: () {
+        if (state == 0) {
+          setState(() {
+            _currentColor = Color(0xffab92c6);
+            state = 1;
+          });
+        } else {
+          setState(() {
+            _currentColor = Colors.black;
+          });
+          state = 0;
+        }
+      },
+    );
   }
 }
